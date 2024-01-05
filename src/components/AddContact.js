@@ -1,6 +1,7 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 class AddContact extends React.Component{
+     
     state ={
         name:"",
         email:"",
@@ -15,6 +16,13 @@ class AddContact extends React.Component{
         this.props.addContactHandler(this.state)
         console.log(this.state);
         this.setState({name:"",email:""});
+    }
+    checkContacts = () =>{
+        if(this.state === null)
+        {
+            alert("No Contacts to display");
+            return;
+        }
     }
     render(){
         return(
@@ -41,6 +49,9 @@ class AddContact extends React.Component{
                     />
                 </div>
                 <button className="ui button blue">Add</button>
+                <Link to = "/">
+                <button className="ui right floated button blue" onClick={this.checkContacts}>View Contacts</button>
+                </Link>
             </form>
             </div>
         )
